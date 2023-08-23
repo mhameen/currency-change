@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #d5d2d2;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  width: 300px;
+  text-align: center;
+  background-color: white;
+}
+.card h2 {
+  margin: 0;
+  padding-bottom: 5px;
+  background-color: white;
+}
+
+.countryOptions {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.countryOptions h1 {
+  margin-right: 20px;
+}
+
+.selectCountry {
+  margin-top: 5px;
+  width: 150px;
+  height: 30px;
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid grey;
+}
+.monthsElement {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #37404d;
+  background-color: white;
+}
+.priceElement {
+  font-size: 30px;
+  font-weight: 300;
+  margin: 0;
+  color: #37404d;
+  background-color: white;
+}
+.pricePMElement {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #0b0b0b;
+  background-color: white;
+}
+.jarElement {
+  padding-top: 15px;
+  font-size: 16px;
+  background-color: white;
+}
+.t1Element {
+  background-color: white;
+  padding-top: 20px;
+  font-size: 16px;
+}
+.t2Element {
+  padding-top: 20px;
+  font-size: 16px;
+  background-color: white;
+}
+.t3Element {
+  padding-top: 20px;
+  font-size: 16px;
+  background-color: white;
+}
+.t4Element {
+  padding-top: 20px;
+  font-size: 16px;
+  background-color: white;
+}
+.t5Element {
+  padding-top: 20px;
+  font-size: 16px;
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.card-link-anchor {
+  text-decoration: none;
+  color: #0b0b0b;
+  text-align: center;
+  background-color: white;
+}
+
+.card-link {
+  /* margin-top: 40px; */
+  width: 200px;
+  height: 40px;
+  border: solid 2px #18e047;
+  padding-top: 10px;
+  margin: 0 auto;
+  background-color: white;
+}
+.card-link:hover {
+  background: #18e047;
+  color: #ffffff;
+}
+
+.card-link-anchor:hover  {
+    background: #18e047;
+  }
+  @media screen and (max-width: 600px){
+    .cards {
+        display: flex;
+        flex-direction: column;
+      }
+      .countryOptions{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+  }

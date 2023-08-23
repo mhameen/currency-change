@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reusable Card Component</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="countryOptions">
+      <h1>Select Currency</h1>
+      <select
+        onchange="updateCardContent(this.value)"
+        class="selectCountry"
+        id="countrySelect"
+      >
+        <option value="us">United States</option>
+        <option value="ind">India</option>
+        <option value="ca">Canada</option>
+        <option value="eu">Europe</option>
+        <option value="gbp">GBP</option>
+      </select>
+    </div>
+    <div id="app" class="cards"></div>
+    <script>
+      const jsonData = {
+        us: [
+          {
+            months: "3 months",
+            price: "$54 for 6 Jars",
+            pricePerMonth: "($18/month)",
+            jar: "Get 6 jars at $2.99",
+            t1: "Free delivery on all orders",
+            t2: "unlimited number of order",
+            t3: "no mark up on store price",
+            t4: "any retailer",
+            t5: "any product",
+          },
+          {
+            months: "6 months",
+            price: "$84 for 7 Jars",
+            pricePerMonth: "($14/month)",
+            jar: "Get upto 5 additional jars at $1.99",
+            t1: "Free delivery on all orders",
+            t2: "unlimited number of order",
+            t3: "no mark up on store price",
+            t4: "any retailer",
+            t5: "any product",
+          },
+          {
+            months: "12 months",
+            price: "$144 for 12 Jars",
+            pricePerMonth: "($12/month)",
+            jar: "Get additional jars at $0.99",
+            t1: "Free delivery on all orders",
+            t2: "unlimited number of order",
+            t3: "no mark up on store price",
+            t4: "any retailer",
+            t5: "any product",
+          },
+        ],
+        ind: [
+          {
+            months: "3 months",
+            price: "₹4,486.08 for 6 Jars",
+            pricePerMonth: "(₹1,494.03/month)",
+            jar: "Get 6 jars at ₹248.07",
+            t1: "Free delivery on all orders",
+            t2: "unlimited number of order",
+            t3: "no mark up on store price",
+            t4: "any retailer",
+            t5: "any product",
+          },
+          {
+            months: "6 months",
+            price: "₹6,978.17 for 7 Jars",
+            pricePerMonth: "(₹1,162.02/month)",
+            jar: "Get upto 5 additional jars at ₹165.10",
+            t1: "Free delivery on all orders",
+            t2: "unlimited number of order",
+            t3: "no mark up on store price",
+            t4: "any retailer",
+            t5: "any product",
+          },
+          {
+            months: "12 months",
+            price: "₹11,962.58 for 12 Jars",
+            pricePerMonth: "(₹996.16/month)",
+            jar: "Get additional jars at ₹82.14",
+            t1: "Free delivery on all orders",
+            t2: "unlimited number of order",
+            t3: "no mark up on store price",
+            t4: "any retailer",
+            t5: "any product",
+          },
+        ],
+        ca: [
+          {
+            months: "3 months",
+            price: "C$73.07 for 6 Jars",
+            pricePerMonth: "(C$24.36/month)",
+            jar: "Get 6 jars at C$4.05",
+            t1: "Free delivery on all orders",
+            t2: "unlimited number of order",
+            t3: "no mark up on store price",
+            t4: "any retailer",
+            t5: "any product",
+          },
+          {
+            months: "6 months",
+            price: "C$113.65 for 7 Jars",
+            pricePerMonth: "(C$18.95/month)",
+            jar: "Get upto 5 additional jars at C$2.69",
+            t1: "Free delivery on all orders",
+            t2: "unlimited number of order",
+            t3: "no mark up on store price",
+            t4: "any retailer",
+            t5: "any product",
+          },
+          {
+            months: "12 months",
+            price: "C$194.83 for 12 Jars",
+            pricePerMonth: "(C$16.24/month)",
+            jar: "Get additional jars at C$1.34",
+            t1: "Free delivery on all orders",
+            t2: "unlimited number of order",
+            t3: "no mark up on store price",
+            t4: "any retailer",
+            t5: "any product",
+          },
+        ],
+        eu: [
+          {
+            months: "3 months",
+            price: "€49.43 for 6 Jars",
+            pricePerMonth: "(€16.49/month)",
+            jar: "Get 6 jars at €2.74",
+            t1: "Free delivery on all orders",
+            t2: "unlimited number of order",
+            t3: "no mark up on store price",
+            t4: "any retailer",
+            t5: "any product",
+          },
+          {
+            months: "6 months",
+            price: "€76.88 for 7 Jars",
+            pricePerMonth: "(€12.82/month)",
+            jar: "Get upto 5 additional jars at €1.83",
+            t1: "Free delivery on all orders",
+            t2: "unlimited number of order",
+            t3: "no mark up on store price",
+            t4: "any retailer",
+            t5: "any product",
+          },
+          {
+            months: "12 months",
+            price: "€131.82 for 12 Jars",
+            pricePerMonth: "(€10.99/month)",
+            jar: "Get additional jars at €0.91",
+            t1: "Free delivery on all orders",
+            t2: "unlimited number of order",
+            t3: "no mark up on store price",
+            t4: "any retailer",
+            t5: "any product",
+          },
+        ],
+        gbp: [
+          {
+            months: "3 months",
+            price: "£42.22 for 6 Jars",
+            pricePerMonth: "(£14.08/month)",
+            jar: "Get 6 jars at £2.34",
+            t1: "Free delivery on all orders",
+            t2: "unlimited number of order",
+            t3: "no mark up on store price",
+            t4: "any retailer",
+            t5: "any product",
+          },
+          {
+            months: "6 months",
+            price: "£65.68 for 7 Jars",
+            pricePerMonth: "(£10.95/month)",
+            jar: "Get upto 5 additional jars at £1.56",
+            t1: "Free delivery on all orders",
+            t2: "unlimited number of order",
+            t3: "no mark up on store price",
+            t4: "any retailer",
+            t5: "any product",
+          },
+          {
+            months: "12 months",
+            price: "£112.59 for 12 Jars",
+            pricePerMonth: "(£9.38/month)",
+            jar: "Get additional jars at £0.77",
+            t1: "Free delivery on all orders",
+            t2: "unlimited number of order",
+            t3: "no mark up on store price",
+            t4: "any retailer",
+            t5: "any product",
+          },
+        ],
+      };
+
+      function createCard(
+        months,
+        price,
+        pricePerMonth,
+        jar,
+        t1,
+        t2,
+        t3,
+        t4,
+        t5
+      ) {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const monthsElement = document.createElement("h3");
+        monthsElement.textContent = months;
+        monthsElement.className = "monthsElement";
+
+        const priceElement = document.createElement("p");
+        priceElement.textContent = price;
+        priceElement.className = "priceElement";
+
+        const pricePMElement = document.createElement("p");
+        pricePMElement.textContent = pricePerMonth;
+        pricePMElement.className = "pricePMElement";
+
+        const jarElement = document.createElement("p");
+        jarElement.textContent = jar;
+        jarElement.className = "jarElement";
+
+        const t1Element = document.createElement("p");
+        t1Element.textContent = t1;
+        t1Element.className = "t1Element";
+
+        const t2Element = document.createElement("p");
+        t2Element.textContent = t2;
+        t2Element.className = "t2Element";
+
+        const t3Element = document.createElement("p");
+        t3Element.textContent = t3;
+        t3Element.className = "t3Element";
+
+        const t4Element = document.createElement("p");
+        t4Element.textContent = t4;
+        t4Element.className = "t4Element";
+
+        const t5Element = document.createElement("p");
+        t5Element.textContent = t5;
+        t5Element.className = "t5Element";
+
+        const cardLinkDiv = document.createElement("div");
+        cardLinkDiv.className = "card-link";
+
+        const anchorTag = document.createElement("a");
+        anchorTag.href = "#"; //add anchor tag link here.
+        anchorTag.textContent = "PRE-BOOK WITH 10$";
+        anchorTag.className = "card-link-anchor";
+        cardLinkDiv.appendChild(anchorTag);
+
+        card.appendChild(monthsElement);
+        card.appendChild(priceElement);
+        card.appendChild(pricePMElement);
+        card.appendChild(jarElement);
+        card.appendChild(t1Element);
+        card.appendChild(t2Element);
+        card.appendChild(t3Element);
+        card.appendChild(t4Element);
+        card.appendChild(t5Element);
+        card.appendChild(cardLinkDiv);
+
+        return card;
+      }
+
+      function updateCardContent(selectedCountry) {
+        const app = document.getElementById("app");
+        app.innerHTML = ""; // Clear existing cards
+
+        const countryData = jsonData[selectedCountry];
+        if (countryData) {
+          countryData.map((data) => {
+            const card = createCard(
+              data.months,
+              data.price,
+              data.pricePerMonth,
+              data.jar,
+              data.t1,
+              data.t2,
+              data.t3,
+              data.t4,
+              data.t5
+            );
+            app.appendChild(card);
+          });
+        }
+      }
+
+      // Initial card rendering
+      updateCardContent("us");
+    </script>
+  </body>
+</html>
